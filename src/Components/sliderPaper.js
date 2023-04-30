@@ -15,10 +15,10 @@ export default function SliderPaper({ label1, label2 }) {
                     <Typography sx={{ fontWeight: 600, color: '#fff', marginLeft: 2, fontSize: { xs: 12, sm: 17 } }}>
                         {label2}
                     </Typography >
-                    <Typography sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Typography sx={{ color: '#fff', marginLeft: "16px", margin: 2, fontSize: { xs: 12, sm: 17 } }}>All insurance accepted & no Cost EMI available</Typography>
                         <Button sx={{ fontSize: { xs: 8, sm: 15 }, fontWeight: 600, marginLeft: 2, margin: 2 }} variant="contained">Book Appointment</Button>
-                    </Typography>
+                    </span>
                 </Paper>
             </div>
         </>
