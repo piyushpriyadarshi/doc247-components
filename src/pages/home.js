@@ -1,6 +1,5 @@
 import * as React from "react";
 import Cards from "../Components/cards";
-import Slider from "../Components/Slider";
 import FirstHeader from "../Components/FirstHeader";
 import CircularCards from "../Components/CircularCards";
 import ScreenTest from "@/Components/ScreeningTest";
