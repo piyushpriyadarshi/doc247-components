@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import { Button } from "@mui/material";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -13,7 +15,14 @@ export default function Home() {
       </Head>
       <main>
         <h2>Welcome to Doc247 Components Library</h2>
-        <Button variant="contained">Click</Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            router.push("/home");
+          }}
+        >
+          Home
+        </Button>
       </main>
     </>
   );
