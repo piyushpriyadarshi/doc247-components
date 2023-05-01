@@ -1,9 +1,7 @@
-import { useRouter } from 'next/router';
-const confirmation =(props)=>{
-    const router = useRouter();
-    console.log("props....",router)
-    return(
-        <h1>thanks</h1>
-    )
+import React from "react";
+
+function Confirmation() {
+  return <div>Confirmation</div>;
 }
-export default confirmation;
+
+export default Confirmation;
