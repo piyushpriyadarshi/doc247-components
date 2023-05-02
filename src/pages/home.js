@@ -37,6 +37,7 @@ function Home() {
           backgroundColor: "#fff",
           zIndex: 101,
           m: 1,
+          mt: 1,
           mr: 3,
           mb: 3,
           borderRadius: "2rem",
@@ -61,7 +62,7 @@ function Home() {
       <Grid container spacing={2} sx={{ pt: 10 }}>
         {cardsArray.map((item, ind) => {
           return (
-            <Grid item key={ind} xs={3} md={3}>
+            <Grid item key={ind} xs={6} md={3}>
               <Card>
                 <CardActionArea>
                   <CardMedia
