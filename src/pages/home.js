@@ -30,35 +30,6 @@ import {
 function Home() {
   return (
     <Paper>
-      <Box
-        sx={{
-          position: "fixed",
-          width: "100%",
-          backgroundColor: "#fff",
-          zIndex: 101,
-          m: 1,
-          mt: 1,
-          mr: 3,
-          mb: 3,
-          borderRadius: "2rem",
-        }}
-      >
-        <Paper
-          elevation={3}
-          sx={{
-            borderRadius: "2rem",
-            pl: 2,
-            p: 1.5,
-          }}
-        >
-          <InputBase
-            fullWidth
-            elevation={3}
-            placeholder="search for doctors "
-          />
-        </Paper>
-      </Box>
-
       <Grid container spacing={2} sx={{ pt: 10 }}>
         {cardsArray.map((item, ind) => {
           return (

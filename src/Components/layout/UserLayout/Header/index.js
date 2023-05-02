@@ -17,7 +17,7 @@ function Header() {
           color="primary"
           sx={{ fontWeight: "600", fontSize: "1.3rem" }}
         >
-          Doc 247
+          Doc247
         </Typography>
       </div>
       <nav style={{ display: "flex" }}>

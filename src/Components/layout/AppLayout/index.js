@@ -11,6 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import {
   BottomNavigation,
   BottomNavigationAction,
+  Grid,
   InputBase,
   Paper,
 } from "@mui/material";
@@ -51,7 +52,7 @@ function AppLayout({ children, header, sidebar, window }) {
         //   width: { sm: `calc(100% - ${drawerWidth}px)` },
         //   ml: { sm: `${drawerWidth}px` },
         // }}
-        color="secondary"
+        color="default"
       >
         <Toolbar>
           <IconButton
@@ -65,7 +66,29 @@ function AppLayout({ children, header, sidebar, window }) {
           </IconButton>
           {header}
         </Toolbar>
-        {/* <Toolbar color="primary"></Toolbar> */}
+        <Toolbar>
+          <Grid container>
+            <Grid item xs={12}>
+              <Paper
+                elevation={3}
+                sx={{
+                  // position: "fixed",
+                  // width: "90%",
+                  // backgroundColor: "#fff",
+                  // zIndex: 101,
+                  borderRadius: "2rem",
+                  p: 1,
+                }}
+              >
+                <InputBase
+                  fullWidth
+                  elevation={3}
+                  placeholder="search for doctors "
+                />
+              </Paper>
+            </Grid>
+          </Grid>
+        </Toolbar>
       </AppBar>
       <Drawer
         container={container}
