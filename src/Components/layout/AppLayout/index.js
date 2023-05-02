@@ -8,7 +8,12 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 
-import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  InputBase,
+  Paper,
+} from "@mui/material";
 import { Home, Person, ShoppingCart } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import bottomNav from "./bottomNavigation";
@@ -60,6 +65,7 @@ function AppLayout({ children, header, sidebar, window }) {
           </IconButton>
           {header}
         </Toolbar>
+        {/* <Toolbar color="primary"></Toolbar> */}
       </AppBar>
       <Drawer
         container={container}

@@ -9,7 +9,7 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import { useSelector } from "react-redux";
+import classes from "@/styles/sidebar/sidebar.module.css";
 
 function AppList({
   listData,
@@ -18,8 +18,6 @@ function AppList({
   isListSelected,
 }) {
   const [open, setOpen] = React.useState(true);
-  const theme = useSelector((state) => state.theme.value);
-  console.log(theme);
 
   const handleClick = () => {
     setOpen(!open);

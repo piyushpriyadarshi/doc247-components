@@ -22,6 +22,7 @@ import {
   CardHeader,
   CardMedia,
   Grid,
+  InputBase,
   Paper,
   Typography,
 } from "@mui/material";
@@ -29,39 +30,68 @@ import {
 function Home() {
   return (
     <Paper>
-      <Grid container>
+      <Box
+        sx={{
+          position: "fixed",
+          width: "100%",
+          backgroundColor: "#fff",
+          zIndex: 101,
+          m: 1,
+          mr: 3,
+          mb: 3,
+          borderRadius: "2rem",
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            borderRadius: "2rem",
+            pl: 2,
+            p: 1.5,
+          }}
+        >
+          <InputBase
+            fullWidth
+            elevation={3}
+            placeholder="search for doctors "
+          />
+        </Paper>
+      </Box>
+
+      <Grid container spacing={2} sx={{ pt: 10 }}>
         {cardsArray.map((item, ind) => {
           return (
-            <Card key={ind}>
-              <CardHeader title="Test"></CardHeader>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  image={item.image}
-                  alt="green iguana"
-                  sx={{ margin: 2, height: { xs: 65, sm: 130 }, margin: 0 }}
-                />
-                <CardContent
-                  sx={{
-                    height: { xs: 40, sm: 40 },
-                    padding: 0,
-                    background: "#566984cc",
-                  }}
-                >
-                  <Typography
+            <Grid item key={ind} xs={3} md={3}>
+              <Card>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    image={item.image}
+                    alt="green iguana"
+                    sx={{ margin: 2, height: { xs: 65, sm: 130 }, margin: 0 }}
+                  />
+                  <CardContent
                     sx={{
-                      textAlign: "center",
-                      color: "#00000",
-                      fontSize: { xs: 10, sm: 12 },
-                      fontWeight: 600,
-                      paddingTop: 1,
+                      height: { xs: 40, sm: 40 },
+                      padding: 0,
+                      background: "#566984cc",
                     }}
                   >
-                    {item.name}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                    <Typography
+                      sx={{
+                        textAlign: "center",
+                        color: "#00000",
+                        fontSize: { xs: 10, sm: 12 },
+                        fontWeight: 600,
+                        paddingTop: 1,
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           );
         })}
         {/* <Grid item sx={{ xs: 12, border: "2px solid red" }} xs={6}>
