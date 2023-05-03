@@ -18,11 +18,14 @@ import {
 import { Home, Person, ShoppingCart } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import bottomNav from "./bottomNavigation";
+import FullScreenDialog from "@/Components/commons/FullScreenDialog";
 
 const drawerWidth = 240;
 
 function AppLayout({ children, header, sidebar, window }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isSearchOpen, setisSearchOpen] = React.useState(false);
+
   const [value, setValue] = React.useState(0);
 
   const handleDrawerToggle = () => {
@@ -42,6 +45,13 @@ function AppLayout({ children, header, sidebar, window }) {
 
   const container =
     window !== undefined ? () => window.document.body : undefined;
+
+  const handleSearchFocus = () => {
+    setisSearchOpen(true);
+  };
+  const handleSearchDialogClose = () => {
+    setisSearchOpen(false);
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -77,13 +87,15 @@ function AppLayout({ children, header, sidebar, window }) {
                   // backgroundColor: "#fff",
                   // zIndex: 101,
                   borderRadius: "2rem",
-                  p: 1,
+                  p: 0.5,
                 }}
               >
                 <InputBase
                   fullWidth
                   elevation={3}
                   placeholder="search for doctors "
+                  // onChange={handleSearchFocus}
+                  onBeforeInput={handleSearchFocus}
                 />
               </Paper>
             </Grid>
@@ -162,6 +174,7 @@ function AppLayout({ children, header, sidebar, window }) {
           })}
         </BottomNavigation>
       </Paper>
+      <FullScreenDialog open={isSearchOpen} onClose={handleSearchDialogClose} />
     </Box>
   );
 }
