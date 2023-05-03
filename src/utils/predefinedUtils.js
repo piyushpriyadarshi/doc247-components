@@ -11,16 +11,16 @@ export const screenTests = [
     { 'name': 'Cancer Marker Checkup', "image": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM0yUGboG1TC5oZVtE1fjSSeI0oFz8A7uKj2f-9B2ElT6pPqYLdiD1erTsHDfBS7rCaXg&usqp=CAU', 'price': 2199 },
     { 'name': 'Skin Tests', "image": 'https://apollohealthlib.blob.core.windows.net/health-library/2021/04/Allergy-Skin-Tests-1.jpg', 'price': 160 },
     { 'name': 'Sexual Wellness tests', "image": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAgv0Y6hqqQ9OTz6BvFoMiAjRDX2OKK467QArPdSK4BLF5ZmJd9Z6eHhucQXlXiVZr-tA&usqp=CAU', 'price': 100 },
-    { 'name': 'Test for bone and joint issues', "image": 'https://assets.si-bone.com/img/_1200x630_crop_center-center_82_none/provocative-test-hd.jpg?mtime=1584137787  ', 'price': 147 },
+    { 'name': 'Test for bone and joints', "image": 'https://assets.si-bone.com/img/_1200x630_crop_center-center_82_none/provocative-test-hd.jpg?mtime=1584137787  ', 'price': 147 },
     { 'name': 'Tests for Fever', "image": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIwuUwH32YcoSE7C4CD2L_xVQnIoYlkSevIo4dCPjeXWmv4VszNUTavSlneOTJuIARCdM&usqp=CAU', 'price': 200 }
 ]
 
 export const circularCardsArray = [
     { 'name': 'Piles', "image": 'https://www.shutterstock.com/image-vector/hemorrhoids-icon-isolated-on-white-260nw-1587397927.jpg' },
-    { 'name': 'Knee replacement', "image": 'https://media.istockphoto.com/id/1314717315/vector/knee-replacement-implant-rgb-color-icon.jpg?s=612x612&w=0&k=20&c=2uR0Wiv3TY9wVkzuUpiVd1Mh51sCxHSABv33X4z5cfk=' },
+    { 'name': 'Knee', "image": 'https://media.istockphoto.com/id/1314717315/vector/knee-replacement-implant-rgb-color-icon.jpg?s=612x612&w=0&k=20&c=2uR0Wiv3TY9wVkzuUpiVd1Mh51sCxHSABv33X4z5cfk=' },
     { 'name': 'cataract', "image": 'https://cdn-icons-png.flaticon.com/512/2297/2297122.png' },
-    { 'name': 'Anal/Fissure', "image": 'https://cdn-icons-png.flaticon.com/512/4771/4771153.png' },
-    { 'name': 'Hair transplant', "image": 'https://cdn-icons-png.flaticon.com/512/1598/1598000.png' },
+    { 'name': 'Fissure', "image": 'https://cdn-icons-png.flaticon.com/512/4771/4771153.png' },
+    { 'name': 'Hair trans', "image": 'https://cdn-icons-png.flaticon.com/512/1598/1598000.png' },
     { 'name': 'Kidney stone', "image": 'https://cdn-icons-png.flaticon.com/512/5800/5800267.png' },
     { 'name': 'Gall stone', "image": 'https://cdn-icons-png.flaticon.com/512/1453/1453609.png' },
     { 'name': 'Circumcision', "image": 'https://e7.pngegg.com/pngimages/651/877/png-clipart-circumcision-world-wide-day-of-genital-autonomy-haifa-t-shirt-balanitis-others-miscellaneous-blue.png' }
@@ -28,12 +28,12 @@ export const circularCardsArray = [
 
 export const notFeelingwell = [
     { 'name': 'Fever', "image": 'https://cdn-icons-png.flaticon.com/512/2167/2167199.png' },
-    { 'name': 'Bones & joints issue', "image": 'https://cdn-icons-png.flaticon.com/512/2991/2991651.png' },
+    { 'name': 'Bones', "image": 'https://cdn-icons-png.flaticon.com/512/2991/2991651.png' },
     { 'name': 'cough', "image": 'https://cdn-icons-png.flaticon.com/512/2328/2328345.png' },
-    { 'name': 'Breathing issue', "image": 'https://cdn-icons-png.flaticon.com/512/4977/4977938.png' },
-    { 'name': 'HHypertension', "image": 'https://cdn-icons-png.flaticon.com/512/4939/4939226.png' },
-    { 'name': 'Stomach pain', "image": 'https://freepngimg.com/save/41261-stomach-ache-png-download-free/1428x2400' },
-    { 'name': 'Pregnancy issue', "image": 'https://cdn-icons-png.flaticon.com/512/7214/7214834.png' },
+    { 'name': 'Breathing', "image": 'https://cdn-icons-png.flaticon.com/512/4977/4977938.png' },
+    { 'name': 'Hypertension', "image": 'https://cdn-icons-png.flaticon.com/512/4939/4939226.png' },
+    { 'name': 'Stomach', "image": 'https://freepngimg.com/save/41261-stomach-ache-png-download-free/1428x2400' },
+    { 'name': 'Pregnancy', "image": 'https://cdn-icons-png.flaticon.com/512/7214/7214834.png' },
     { 'name': 'Obesity', "image": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFAfS9Kl6c4xPq4JZU1b-mNaM8m6Yxv8yvtw&usqp=CAU' }
 ]
 export const doctorList = [
@@ -50,9 +50,21 @@ export const doctorList = [
 export const Texts = {
     NFW_HEADING: 'Not feeling too well?',
     NFW_SUB_HEADING: 'Treat common symptoms with top specialists',
-    ST_HEADING: 'Popular health checkup and',
+    ST_HEADING: 'Popular health checkups',
     ST_SUB_HEADING: 'through surgeries',
     SURGERIES_TEXT: 'Conditions that can be treated through surgeries',
     FOOTER_TEXT : 'Our vision is to help mankind live healthier, longer lives by making quality healthcare accesible, affordable and convenient.',
     FOOTER_TEXT_SUB : 'Made by Rjsians @ Indore 2023 All rights reserved'
 }
+export const specialities = [{ 'name': 'Dentist', "image": 'https://www.pngall.com/wp-content/uploads/8/Dental-Cleaning-PNG-Free-Download.png' },
+{ 'name': 'Gynecologist', "image": 'https://nelsonhospitals.com/wp-content/uploads/2022/01/obstetrics-gynaecology-inn.jpg' },
+{ 'name': 'Dietitian', "image": 'https://img.lovepik.com/free-png/20220127/lovepik-young-beauty-nutritionist-recommended-fruit-png-image_401955678_wh1200.png' },
+{ 'name': 'Physiotherapist', "image": 'https://www.sports-management-degrees.com/wp-content/uploads/2021/07/how-to-become-a-physical-therapist.jpg' },
+{ 'name': 'General Surgeon', "image": 'https://www.physiciansweekly.com/wp-content/uploads/2016/10/Readmis-EmergGeneralSurg_Feature.png' },
+{ 'name': 'Orthopedist', "image": 'https://media.istockphoto.com/id/1220958078/photo/doctor-and-patient-doctor-examining-of-the-leg-from-the-knee-and-ankle-and-training-broken.jpg?s=612x612&w=0&k=20&c=G1pyXV8chJBQMT2cN5ZB12tjpcd9QnJlwW9Q0HzZcvA=' },
+{ 'name': 'General physician', "image": 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNBhhYJ8XXFwfi3vJR1-ZerYiw8jKPfN2E6SikRqw_4CG5lm3zZ69d1HShwdbqfP4Gy7Q&usqp=CAU' },
+{ 'name': 'Pediatrician', "image": 'https://st4.depositphotos.com/5765702/22001/i/600/depositphotos_220014772-stock-photo-cheerful-female-pediatrician-holds-newborn.jpg' },
+{ 'name': 'Leparoscopy', "image": 'https://shrimahavirhospital.in/wp-content/uploads/2022/04/Laparoscopic-surgery.png' },
+{ 'name': 'Gastroentrologist', "image": 'https://www.chandigarhhelp.com/wp-content/uploads/2022/01/Top-Gastroenterologist-in-Chandigarh.png' }
+]
+
