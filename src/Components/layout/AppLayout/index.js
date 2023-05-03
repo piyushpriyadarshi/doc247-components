@@ -133,6 +133,7 @@ function AppLayout({ children, header, sidebar, window }) {
           p: 0,
           // maxWidth: { sm: `calc(100% - ${drawerWidth}px)` },
           mb: 6,
+          overflow:'hidden'
         }}
       >
         <Toolbar />

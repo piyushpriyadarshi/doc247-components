@@ -1,80 +1,85 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import {
+  Card,
+  CardMedia,
+  Grid,
+  Typography,
+  Tabs,
+  Tab,
+} from "@mui/material";
 
 export default function CircularCard({
   cardsArray,
   cardHeading,
-  cardSubHeading,
 }) {
   return (
     <>
       <Typography
         sx={{
-          fontSize: { xs: 13, sm: 20 },
+          fontSize: { xs: 17, sm: 20 },
           fontWeight: 600,
-          paddingTop: 3,
-          marginLeft: 1,
+          paddingTop: '14px',
+          marginLeft: '11px',
         }}
       >
         {cardHeading}
       </Typography>
-      {cardSubHeading && (
-        <Typography
-          sx={{ fontSize: { xs: 11, sm: 13 }, fontWeight: 400, marginLeft: 1 }}
-        >
-          {cardSubHeading}
-        </Typography>
-      )}
-      <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+
+      <Grid
+        item
+        xs={12}
+        sx={{ display: "flex", justifyContent: "space-between" }}
       >
-        {cardsArray.map((item, ind) => {
-          return (
-            <div key={ind}>
-              <Card
-                sx={{
-                  margin: 2,
-                  width: { xs: 45, sm: 70 },
-                  borderRadius: { xs: 20, sm: 40 },
-                }}
-                key={ind}
-              >
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    image={item.image}
-                    alt="green iguana"
-                    sx={{ height: { xs: 45, sm: 70 } }}
-                  />
-                </CardActionArea>
-              </Card>
-              <Typography
-                sx={{
-                  textAlign: "center",
-                  fontSize: { xs: 8, sm: 11 },
-                  fontWeight: 600,
-                  paddingTop: 0,
-                }}
-              >
-                {item.name}
-              </Typography>
-            </div>
-          );
-        })}
-      </div>
-      {cardSubHeading && (
-        <Box textAlign="center" marginTop={2}>
-          <Button sx={{ width: { xs: 300, sm: 600 } }} variant="outlined">
-            View All Symptoms
-          </Button>
-        </Box>
-      )}
+        <Tabs
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+          TabIndicatorProps={{
+            style: { transition: "none", display: "none" },
+          }}
+          sx={{ overflowX: 'auto' }}
+          value={2}
+        >
+          {cardsArray.map((item, ind) => (
+            <Tab
+              key={ind}
+              disableRipple={false}
+              sx={{ margin: 0, padding: "0.5rem" }}
+              label={
+                <div key={ind}>
+                <Card
+                  sx={{
+                    margin: 0,
+                    width: { xs: 75, sm: 100 },
+                    height: { xs: 75, sm: 100 },
+                    borderRadius: { xs: 20, sm: 40 },
+                    paddingTop:1
+                  }}
+                  key={ind}
+                >
+                    <CardMedia
+                      component="img"
+                      image={item.image}
+                      alt="green iguana"
+                      sx={{ height: { xs: 75, sm: 100 } }}
+                    />
+                </Card>
+                <Typography
+                  sx={{
+                    textAlign: "center",
+                    fontSize: { xs: 14, sm: 14 },
+                    fontWeight: 600,
+                    paddingTop: 0,              
+                  }}
+                >
+                  {item.name}
+                </Typography>
+              </div>
+              }
+            />
+          ))}
+        </Tabs>
+      </Grid>
     </>
   );
 }

@@ -1,59 +1,69 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Box, CardActionArea, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  Tabs,
+  Tab,
+  Box
+} from "@mui/material";
 
 export default function ScreenTest({
   cardsArray,
   cardHeading,
-  cardSubHeading,
 }) {
   return (
     <>
       <Box>
         <Typography
           sx={{
-            fontSize: { xs: 13, sm: 20 },
+            fontSize: { xs: 17, sm: 20 },
             fontWeight: 600,
             paddingTop: 2,
-            marginLeft: 1,
+            marginLeft: '12px',
           }}
         >
           {cardHeading}
         </Typography>
-        {cardSubHeading && (
-          <Typography
-            sx={{
-              fontSize: { xs: 16, sm: 20 },
-              fontWeight: 700,
-              marginLeft: 1,
-            }}
-          >
-            {cardSubHeading}
-          </Typography>
-        )}
       </Box>
-      <Grid container spacing={2}>
-        {cardsArray.map((item, ind) => {
-          return (
-            <Grid key={ind} xs={6} item>
-              <Card>
-                <CardActionArea sx={{ pb: 6 }}>
+
+      <Grid
+        item
+        xs={12}
+        sx={{ display: "flex", justifyContent: "space-between",paddingTop:1 }}
+      >
+        <Tabs
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+          TabIndicatorProps={{
+            style: { transition: "none", display: "none" },
+          }}
+          sx={{ overflowX: 'auto' }}
+          value={3}
+        >
+          {cardsArray.map((item, ind) => (
+            <Tab
+              key={ind}
+              disableRipple={false}
+              sx={{ margin: 0, padding: "0.5rem" }}
+              label={
+                <Card sx={{ margin: 0,height: { xs: 195, sm: 200 }, width: { xs: 185, sm: 200 }}} key={ind}>
                   <CardMedia
                     component="img"
                     image={item.image}
                     alt="green iguana"
-                    sx={{ height: { xs: 85, sm: 140 } }}
+                    sx={{ height: { xs: 125, sm: 200 }, width: { xs: 185, sm: 200 } }}
                   />
-                  <CardContent sx={{ height: { xs: 50, sm: 50 } }}>
+                  <CardContent sx={{ height: { xs: 45, sm: 50 } }}>
                     <Typography
                       sx={{
                         textAlign: "center",
-                        fontSize: { xs: 12, sm: 14 },
+                        fontSize: { xs: 12, sm: 12 },
                         fontWeight: 600,
-                        paddingTop: 1,
+                        paddingTop: 0,
                       }}
                     >
                       {item.name}
@@ -62,7 +72,7 @@ export default function ScreenTest({
                       sx={{
                         textAlign: "center",
                         color: "green",
-                        fontSize: { xs: 12, sm: 14 },
+                        fontSize: { xs: 12, sm: 12 },
                         fontWeight: 600,
                         paddingTop: 0,
                       }}
@@ -70,15 +80,12 @@ export default function ScreenTest({
                       {`starting from Rs ${item.price}`}
                     </Typography>
                   </CardContent>
-                </CardActionArea>
               </Card>
-            </Grid>
-          );
-        })}
+              }
+            />
+          ))}
+        </Tabs>
       </Grid>
-      <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
-      ></div>
     </>
   );
 }
