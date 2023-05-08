@@ -19,6 +19,7 @@ import { Home, Person, ShoppingCart } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import bottomNav from "./bottomNavigation";
 import FullScreenDialog from "@/Components/commons/FullScreenDialog";
+import SearchBar from "@/Components/commons/SearchBar";
 
 const drawerWidth = 240;
 
@@ -77,7 +78,7 @@ function AppLayout({ children, header, sidebar, window }) {
           {header}
         </Toolbar>
         <Toolbar>
-          <Grid container>
+          {/* <Grid container>
             <Grid item xs={12}>
               <Paper
                 elevation={3}
@@ -99,7 +100,12 @@ function AppLayout({ children, header, sidebar, window }) {
                 />
               </Paper>
             </Grid>
-          </Grid>
+          </Grid> */}
+          <SearchBar
+            onFocus={() => {
+              router.push("/search");
+            }}
+          />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -133,7 +139,7 @@ function AppLayout({ children, header, sidebar, window }) {
           p: 0,
           // maxWidth: { sm: `calc(100% - ${drawerWidth}px)` },
           mb: 6,
-          overflow:'hidden'
+          overflow: "hidden",
         }}
       >
         <Toolbar />

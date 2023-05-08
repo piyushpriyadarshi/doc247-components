@@ -11,10 +11,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
+import { Box, Paper } from "@mui/material";
+import ProfileCardLink from "@/Components/Profile/ProfileCardLink";
+import SearchBar from "../SearchBar";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+const arr = ["In person Consulation ", "Video Consultation", "Surgeries"];
 
 export default function FullScreenDialog({ open, onClose }) {
   console.log("opened");
@@ -25,7 +30,7 @@ export default function FullScreenDialog({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
-      <AppBar sx={{ position: "relative" }}>
+      <AppBar sx={{ position: "relative" }} color="default">
         <Toolbar>
           <IconButton
             edge="start"
@@ -35,32 +40,50 @@ export default function FullScreenDialog({ open, onClose }) {
           >
             <CloseIcon />
           </IconButton>
-          <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-            Sound
-          </Typography>
-          <Button
-            autoFocus
-            color="inherit"
-            onClick={() => {
-              onClose();
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flex: 1,
             }}
           >
-            save
-          </Button>
+            <Typography
+              sx={{
+                ml: 2,
+              }}
+              variant="h6"
+              component="div"
+            >
+              Search
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
-      <List>
-        <ListItem button>
-          <ListItemText primary="Phone ringtone" secondary="Titania" />
-        </ListItem>
-        <Divider />
-        <ListItem button>
-          <ListItemText
-            primary="Default notification ringtone"
-            secondary="Tethys"
-          />
-        </ListItem>
-      </List>
+      <Box sx={{ mt: 2 }}>
+        <SearchBar
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
+        />
+        {/* <ProfileCardLink /> */}
+        <div style={{ marginTop: "3rem" }}>
+          <Typography variant="h5" component="h3">
+            what are you searching for?
+          </Typography>
+          {arr.map((data, index) => {
+            return (
+              <Paper
+                key={index}
+                sx={{ borderRadius: 2, p: 2, mt: 2, mr: 2, ml: 2 }}
+                elevation={1}
+              >
+                {data}
+              </Paper>
+            );
+          })}
+        </div>
+      </Box>
     </Dialog>
   );
 }

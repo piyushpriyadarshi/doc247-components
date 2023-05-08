@@ -1,9 +1,8 @@
-import { Person } from '@mui/icons-material';
-import React from 'react'
-import { requestRouteChange } from '../../utils/AuthUtils';
-import ProfileCard from './ProfileCard';
-import ProfileCardLink from './ProfileCardLink'
-
+import { Person } from "@mui/icons-material";
+import React from "react";
+import { requestRouteChange } from "../../utils/AuthUtils";
+import ProfileCard from "./ProfileCard";
+import ProfileCardLink from "./ProfileCardLink";
 
 const cardlink = [
   {
@@ -44,4 +43,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage
+export default ProfilePage;

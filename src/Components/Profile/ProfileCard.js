@@ -14,7 +14,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
-function ProfileCard({ onClick,...other }) {
+function ProfileCard({ onClick, ...other }) {
   return (
     <>
       <Paper elevation={3} sx={{ m: 1 }} {...other}>

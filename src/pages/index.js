@@ -10,26 +10,33 @@ import {
   circularCardsArray,
   notFeelingwell,
   Texts,
-  specialities
+  specialities,
 } from "../utils/predefinedUtils";
 import UserLayout from "@/Components/layout/UserLayout";
-import {
-  Paper,
-} from "@mui/material";
+import { Paper } from "@mui/material";
 
 function Home() {
   return (
     <Paper>
       <Cards cardsArray={cardsArray} Heading={"Our Offerings"} isFirst={true} />
-      <Cards cardsArray={specialities} Heading={"Find doctors in top specialities"} />
-      <CircularCards cardsArray={circularCardsArray} cardHeading={'Any Symptoms?'} />
+      <Cards
+        cardsArray={specialities}
+        Heading={"Find doctors in top specialities"}
+      />
+      <CircularCards
+        cardsArray={circularCardsArray}
+        cardHeading={"Any Symptoms?"}
+      />
       <Divider sx={{ paddingTop: 2 }} variant="middle" />
       <ScreenTest
         cardsArray={screenTests}
         cardHeading={Texts.ST_HEADING}
         cardSubHeading={Texts.ST_SUB_HEADING}
       />
-      <CircularCards cardsArray={notFeelingwell} cardHeading={'Not Feeling well?'} />
+      <CircularCards
+        cardsArray={notFeelingwell}
+        cardHeading={"Not Feeling well?"}
+      />
       <Divider sx={{ paddingTop: 1 }} variant="middle" />
       <Footer />
     </Paper>

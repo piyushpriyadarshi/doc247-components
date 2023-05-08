@@ -7,13 +7,10 @@ import {
   Typography,
   Tabs,
   Tab,
-  Box
+  Box,
 } from "@mui/material";
 
-export default function ScreenTest({
-  cardsArray,
-  cardHeading,
-}) {
+export default function ScreenTest({ cardsArray, cardHeading }) {
   return (
     <>
       <Box>
@@ -22,7 +19,7 @@ export default function ScreenTest({
             fontSize: { xs: 17, sm: 20 },
             fontWeight: 600,
             paddingTop: 2,
-            marginLeft: '12px',
+            marginLeft: "12px",
           }}
         >
           {cardHeading}
@@ -32,7 +29,7 @@ export default function ScreenTest({
       <Grid
         item
         xs={12}
-        sx={{ display: "flex", justifyContent: "space-between",paddingTop:1 }}
+        sx={{ display: "flex", justifyContent: "space-between", paddingTop: 1 }}
       >
         <Tabs
           variant="scrollable"
@@ -41,7 +38,7 @@ export default function ScreenTest({
           TabIndicatorProps={{
             style: { transition: "none", display: "none" },
           }}
-          sx={{ overflowX: 'auto' }}
+          sx={{ overflowX: "auto" }}
           value={3}
         >
           {cardsArray.map((item, ind) => (
@@ -50,12 +47,22 @@ export default function ScreenTest({
               disableRipple={false}
               sx={{ margin: 0, padding: "0.5rem" }}
               label={
-                <Card sx={{ margin: 0,height: { xs: 195, sm: 200 }, width: { xs: 185, sm: 200 }}} key={ind}>
+                <Card
+                  sx={{
+                    margin: 0,
+                    height: { xs: 195, sm: 200 },
+                    width: { xs: 185, sm: 200 },
+                  }}
+                  key={ind}
+                >
                   <CardMedia
                     component="img"
                     image={item.image}
                     alt="green iguana"
-                    sx={{ height: { xs: 125, sm: 200 }, width: { xs: 185, sm: 200 } }}
+                    sx={{
+                      height: { xs: 125, sm: 200 },
+                      width: { xs: 185, sm: 200 },
+                    }}
                   />
                   <CardContent sx={{ height: { xs: 45, sm: 50 } }}>
                     <Typography
@@ -80,7 +87,7 @@ export default function ScreenTest({
                       {`starting from Rs ${item.price}`}
                     </Typography>
                   </CardContent>
-              </Card>
+                </Card>
               }
             />
           ))}
