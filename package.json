@@ -26,11 +26,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.10.0",
-    "react-snap-carousel": "^0.3.1",
-    "async": "^3.2.4",
-    "recursive-readdir": "^2.2.3",
-    "mime-types": "^2.1.35",
-    "aws-sdk": "^2.1299.0"
+    "react-snap-carousel": "^0.3.1"
   },
   "devDependencies": {
     "prettier": "^2.8.8"
