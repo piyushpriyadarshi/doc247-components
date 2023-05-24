@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/router";
 
-export default function generalCard({ cardsArray, Heading, isFirst }) {
+export default function GeneralCard({ cardsArray, Heading, isFirst }) {
   const router = useRouter();
   return (
     <div style={{ marginTop: isFirst ? "70px" : "14px" }}>
