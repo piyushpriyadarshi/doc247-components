@@ -144,7 +144,7 @@ const Confirmation = (props) => {
       <Divider sx={{ marginTop: '10px', height: '20px', borderBottomWidth: 'thick', borderColor: '#e7ecf0' }} />
       <Button variant="contained" sx={{ background: '#bcbaba', color: '#fff', width: '90%', marginLeft: '5%', borderRadius: "4px", marginTop: '12px' }}>confirm clinic visit</Button>
       <Typography sx={{ fontSize: '12px', fontWeight: 400, margin: '12px 12px 0px 12px' }}>1.Updates will be sent to +918871967069</Typography>
-      <Typography sx={{ fontSize: '12px', fontWeight: 400, margin: '5px 12px 0px 12px' }}>By booking this appointment, you agree to Doc247's <a style={{ fontSize: '12px', fontWeight: 600, color: '#5bbadf' }} href="">Terms and Conditions</a>. You can also Pre-pay for this appointment by selecting Pay Online option. You can read our <a style={{ fontSize: '12px', fontWeight: 600, color: '#5bbadf' }} href="">payment FAQs</a>.</Typography>
+      <Typography sx={{ fontSize: '12px', fontWeight: 400, margin: '5px 12px 0px 12px' }}>By booking this appointment, you agree to Doc24s <a style={{ fontSize: '12px', fontWeight: 600, color: '#5bbadf' }} href="">Terms and Conditions</a>. You can also Pre-pay for this appointment by selecting Pay Online option. You can read our <a style={{ fontSize: '12px', fontWeight: 600, color: '#5bbadf' }} href="">payment FAQs</a>.</Typography>
     </>
   )
 }
