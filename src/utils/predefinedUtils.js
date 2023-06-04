@@ -146,7 +146,7 @@ export const doctorList = [
     name: "Rashmi Sharma",
     type: "Gynecolgist",
     Exp: 2,
-    Add: "AM 100 DD Nagar . Sparsh Hospital",
+    Add: "AM 100 DD Nagar",
     fee: 600,
     image:
       "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg?w=2000",
@@ -155,7 +155,7 @@ export const doctorList = [
     name: "Ankit Sharma",
     type: "Dentist",
     Exp: 7,
-    Add: "Bhagat singh nagar xyz Clinic",
+    Add: "Bhagat singh nagar",
     fee: 300,
     image:
       "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&w=1000&q=80",
@@ -164,7 +164,7 @@ export const doctorList = [
     name: "Amrish Sharma",
     type: "Neurologist",
     Exp: 1,
-    Add: "DD Nagar Mittal Clinic",
+    Add: "DD Nagar",
     fee: 300,
     image:
       "https://www.kauveryhospital.com/doctorimage/recent/Dr-Deepak-Kumar2022-09-12-11:55:50am.jpg",
@@ -173,7 +173,7 @@ export const doctorList = [
     name: "kiran pal",
     type: "General Physician",
     Exp: 5,
-    Add: "DD Nagar xyz Clinic",
+    Add: "DD Nagar",
     fee: 300,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvSOvZlEko4kuvJh_w_jhGbD_Y9FlKXHsUDw&usqp=CAU",
@@ -182,7 +182,7 @@ export const doctorList = [
     name: "Unnati Sharma",
     type: "pedodontist",
     Exp: 7,
-    Add: "Rachna nagar xyz Clinic",
+    Add: "Rachna nagar",
     fee: 300,
     image:
       "https://www.shutterstock.com/shutterstock/photos/1724693776/display_1500/stock-photo-profile-photo-of-attractive-family-doc-lady-patients-consultation-friendly-smiling-reliable-1724693776.jpg",
@@ -191,7 +191,7 @@ export const doctorList = [
     name: "Jai satyapal",
     type: "general",
     Exp: 9,
-    Add: "PintoPark xyz Clinic",
+    Add: "PintoPark",
     fee: 300,
     image:
       "https://st.depositphotos.com/1518767/3917/i/600/depositphotos_39179963-stock-photo-male-doctor-with-laptop-at.jpg",
@@ -200,7 +200,7 @@ export const doctorList = [
     name: "Ankur joshi",
     type: "kids doctor",
     Exp: 34,
-    Add: "Hazira xyz Clinic",
+    Add: "Hazira",
     fee: 300,
     image:
       "https://thumbs.dreamstime.com/z/mature-indian-doctor-portrait-male-medical-uniform-standing-plain-background-shadow-61211616.jpg",
@@ -209,7 +209,7 @@ export const doctorList = [
     name: "Hemant Rai",
     type: "ghar ka dr",
     Exp: 45,
-    Add: "Chetakpuri xyz Clinic",
+    Add: "Chetakpuri",
     fee: 300,
     image:
       "https://thumbs.dreamstime.com/b/indian-female-medical-doctor-portrait-uniform-hand-holding-test-report-standing-white-background-81003009.jpgg",
@@ -218,7 +218,7 @@ export const doctorList = [
     name: "Gaurav singh",
     type: "hamara dr",
     Exp: 3,
-    Add: "Morar xyz Clinic",
+    Add: "Morar",
     fee: 300,
     image: "https://cdn-icons-png.flaticon.com/512/2167/2167199.png",
   },
