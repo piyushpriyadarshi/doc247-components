@@ -15,9 +15,15 @@ import { Paper } from "@mui/material";
 import Copyright from "@/Components/commons/CopyRight";
 import Logo from "@/Components/commons/Logo";
 import IndividualPageLayout from "@/Components/layout/IndividualPageLayout";
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function SignIn() {
   const router = useRouter();
+  const [isOpen, setIsOpen] = React.useState(false);
   //   const { data: session, status } = useSession();
   //   React.useEffect(() => {
   //     if (status === "authenticated") {
@@ -34,25 +40,42 @@ function SignIn() {
   //     }
   //   }, [status, router]);
 
+  const handleClose = (event, reason) => {
+    setIsOpen(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //     email: data.get('email'),
-    //     password: data.get('password'),
-    // });
-    const res = login("credentials", {
-      redirect: false,
-      username: data.get("email"),
-      password: data.get("password"),
-      callbackUrl: router.query.callbackUrl,
+    console.log({
+      email: data.get('email'),
+      password: data.get('password'),
     });
-    const message = {};
-    message.success = "Log in Success";
-    message.error = "Invalid Credentails";
-    message.loading = "Loging in ....";
-    message.promise = res;
-    createHotToast(message, "promise");
+
+    if (data.get('email') == 'jai@email.com' && data.get('password') == 'Jai0987') {
+      setIsOpen(false)
+      router.push("/home");
+    }
+    if (data.get('email') == 'piyush@email.com' && data.get('password') == 'Piyush0987') {
+      setIsOpen(false)
+      router.push("/doctordashboard");
+    }
+    else
+      setIsOpen(true)
+    // const res = login("credentials", {
+    //   redirect: false,
+    //   username: data.get("email"),
+    //   password: data.get("password"),
+    //   callbackUrl: router.query.callbackUrl,
+    // });
+    // const message = {};
+    // message.success = "Log in Success";
+    // message.error = "Invalid Credentails";
+    // message.loading = "Loging in ....";
+    // message.promise = res;
+    // createHotToast(message, "promise");
+
+
   };
 
   //   console.log("login url ", BACKEND_URL.login);
@@ -106,6 +129,14 @@ function SignIn() {
               id="password"
               autoComplete="current-password"
             />
+            <Grid>
+              {isOpen &&
+                <Alert
+                  onClose={handleClose}
+                  severity="error">
+                  Please provide valid credentials!
+                </Alert>}
+            </Grid>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -121,13 +152,12 @@ function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/forgot-password" variant="body2">
+                <Link href="/forgotPassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="a">
-                  {/* <a >{"Don't have an account? Sign Up"}</a> */}
+                <Link href="/" variant="a">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -142,6 +172,6 @@ function SignIn() {
 
 SignIn.layout = IndividualPageLayout;
 SignIn.metaData = {
-  title: "Sigin | Login  , AstroGanesha",
+  title: "Sign in",
 };
 export default SignIn;

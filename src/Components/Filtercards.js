@@ -17,22 +17,22 @@ export default function FilterCard() {
           TabIndicatorProps={{
             style: { transition: "none", display: "none" },
           }}
-          sx={{ overflowX: "auto" }}
+          sx={{ overflowX: "auto"}}
           value={0}
-          allowScrollButtonsMobile
+          // allowScrollButtonsMobile
         >
           {['Free appointment','Now or Later','Video consult','sort/filters'].map((item, ind) => (
             <Tab
               key={ind}
               disableRipple={false}
-              sx={{ margin: 0,padding:'2px 4px' }}
+              sx={{ margin: 0,padding:'2px 4px'}}
               label={
                 <div key={ind}>
                   <Card
                     sx={{
                       margin: 0,
                       borderRadius: { xs: 8, sm: 16 },
-                      padding: 2,
+                      padding: '12px',
                     }}
                     key={ind}
                   >
