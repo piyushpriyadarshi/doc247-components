@@ -32,7 +32,6 @@ export default function GeneralCard({ cardsArray, Heading, isFirst }) {
           }}
           sx={{ overflowX: "auto" }}
           value={0}
-          allowScrollButtonsMobile
         >
           {cardsArray.map((item, index) => (
             <Tab

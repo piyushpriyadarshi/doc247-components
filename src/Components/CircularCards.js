@@ -29,7 +29,7 @@ export default function CircularCard({ cardsArray, cardHeading }) {
           }}
           sx={{ overflowX: "auto" }}
           value={0}
-          allowScrollButtonsMobile
+          // allowScrollButtonsMobile
         >
           {cardsArray.map((item, ind) => (
             <Tab

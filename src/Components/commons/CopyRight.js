@@ -12,7 +12,7 @@ export default function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="/">
-        Share My Codes
+        Doc247
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

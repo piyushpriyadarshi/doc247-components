@@ -39,7 +39,7 @@ export default function ScreenTest({ cardsArray, cardHeading }) {
             style: { transition: "none", display: "none" },
           }}
           sx={{ overflowX: "auto" }}
-          value={3}
+          value={0}
         >
           {cardsArray.map((item, ind) => (
             <Tab

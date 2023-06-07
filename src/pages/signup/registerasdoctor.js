@@ -17,26 +17,35 @@ import { useRouter } from "next/router";
 import Logo from "@/Components/commons/Logo";
 import IndividualPageLayout from "@/Components/layout/IndividualPageLayout";
 import Copyright from "@/Components/commons/CopyRight";
+import MuiAlert from '@mui/material/Alert';
 
-function SignUp() {
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+function DoctorSignUp() {
   const router = useRouter();
 
   const [formData, SetFormData] = React.useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     password: "",
+    number:''
   });
   const [error, SetErrorData] = React.useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     password: "",
+    number:''
   });
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const handleValidation = (type, value) => {
     let message = "";
     switch (type) {
+      case 'number':
+        message = validateNumber(value);
+        break;
       case "email":
         var re = /\S+@\S+\.\S+/;
         message = re.test(value) ? "" : "Please Enter Correct Email";
@@ -66,6 +75,19 @@ function SignUp() {
     }
     return message;
   }
+  function validateNumber(number) {
+    let message = "";
+    if (number.length < 10 && number.length >0 ) {
+      message = "Your mobile number should be of 10 digits";
+    }
+    if (number.length > 10 ) {
+      message = " Your mobile number should not be more than 10 digits";
+    }
+    if (number.length <1 ) {
+      message = " mobile number is required";
+    }
+    return message;
+  }
 
   const handleInputChange = (event) => {
     const data = { ...formData };
@@ -78,28 +100,36 @@ function SignUp() {
       router.push("/login");
     }, 500);
   };
+
+  const handleClose = (event, reason) => {
+    setIsOpen(false);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     //prepare the api request bodySinupRequest
-    const payload = new SignupRequest(formData);
+    // const payload = new SignupRequest(formData);
     // toast("Default Notification !");
-    try {
-      const res = axios.post(BACKEND_URL.signup, payload);
-      const message = {};
-      message.success = "User Created !!";
-      message.error = "Some Error Occurred";
-      message.loading = "Creating User ....";
-      message.promise = res;
-      createHotToast(message, "promise");
-      await res;
-      console.log(res);
-      changeRoute();
-    } catch (error) {
-      const message = error?.response?.data?.message
-        ? error?.response?.data?.message
-        : "Some Error Occurred , Please Try Again!";
-    }
-    console.log(payload);
+    // try {
+    //   const res = axios.post(BACKEND_URL.signup, formData);
+    //   const message = {};
+    //   message.success = "User Created !!";
+    //   message.error = "Some Error Occurred";
+    //   message.loading = "Creating User ....";
+    //   message.promise = res;
+    //   createHotToast(message, "promise");
+    //   await res;
+    //   console.log(res);
+    //   changeRoute();
+    // } catch (error) {
+    //   const message = error?.response?.data?.message
+    //     ? error?.response?.data?.message
+    //     : "Some Error Occurred , Please Try Again!";
+    // }
+    if(formData.number === '' || formData.password === '' || formData.email === '' || formData.name === '')
+    setIsOpen(true)
+    else
+    router.push("/home");
+    console.log(formData);
   };
 
   return (
@@ -121,29 +151,34 @@ function SignUp() {
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="given-name"
-                name="firstName"
+                name="name"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="name"
+                label="Name"
                 autoFocus
                 onChange={handleInputChange}
                 value={formData.firstName}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="family-name"
+                id="number"
+                label="Mobile Number"
+                name="number"
+                type='number'
+                autoComplete="number"
+                InputProps={{ maxLength: 10}}
                 onChange={handleInputChange}
-                value={formData.lastName}
+                value={formData.number}
+                error={error.number}
+                helperText={error.number}
+                color="success"
               />
             </Grid>
             <Grid item xs={12}>
@@ -177,9 +212,17 @@ function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
+            {isOpen &&
+                <Alert
+                  onClose={handleClose}
+                  severity="error">
+                  Please fill all required fields!
+                </Alert>}
+                </Grid>
+            <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label="I want to receive booking updates via email."
               />
             </Grid>
           </Grid>
@@ -194,10 +237,15 @@ function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="login" variant="body2">
+          <Grid container >
+          <Grid item >
+              <Link href="/login" variant="body2" color="inherit">
                 Already have an account? Sign in
+              </Link>
+            </Grid>
+            <Grid item sx={{marginTop:{sm:0,xs:2},marginLeft:{xs:0,sm:3}}}>
+              <Link href="/" variant="body2" color="inherit">
+                Not a doctor? Sign up here
               </Link>
             </Grid>
           </Grid>
@@ -208,9 +256,9 @@ function SignUp() {
   );
 }
 
-SignUp.layout = IndividualPageLayout;
-SignUp.metaData = {
-  title: "Register for AstroGanesha",
+DoctorSignUp.layout = IndividualPageLayout;
+DoctorSignUp.metaData = {
+  title: "Register for Onboarding",
 };
 
-export default SignUp;
+export default DoctorSignUp;

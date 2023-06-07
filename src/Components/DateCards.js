@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 export default function DateCard({ dateArray }) {
     const router = useRouter();
     const [dateSelected, setDateSelected] = React.useState(dateArray[0])
+    const [dateIndexSelected, setDateIndexSelected] = React.useState(0)
     return (
         <>
             <div style={{ background: '#dceaf2', marginTop: '20px' }} >
@@ -31,8 +32,8 @@ export default function DateCard({ dateArray }) {
                             style: { transition: "none", display: "none" },
                         }}
                         sx={{ overflowX: "auto" }}
-                        value={0}
-                        allowScrollButtonsMobile
+                        value={dateIndexSelected}
+                        // allowScrollButtonsMobile
                     >
                         {dateArray.map((item, index) => (
                             <Tab
@@ -42,7 +43,10 @@ export default function DateCard({ dateArray }) {
                                 label={
                                     <Card
                                         sx={{ margin: 0, borderRadius: 0, padding: 1, paddingBottom: 2 }}
-                                        onClick={() => setDateSelected(item)}
+                                        onClick={() => {
+                                            setDateSelected(item)
+                                            setDateIndexSelected(index<dateArray.length-1 ? index+1:index)
+                                        }}
                                     >
                                         <CardContent
                                             sx={{
