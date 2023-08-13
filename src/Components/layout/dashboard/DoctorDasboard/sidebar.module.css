@@ -1,0 +1,35 @@
+
+.selected {
+    /* border-left: 3px solid blue !important;
+    line-height: 2px; */
+    border-image: linear-gradient(transparent 10%, #ffa000 10% 90%,transparent 80%) 0 0 0 1 / 4px;
+    border-radius: 10px;
+    /* margin: 3px; */
+    /* color: #ffa000; */
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.selected-dark {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px;
+}
+
+.listItem {
+    border-radius: 10px;
+}
+
+.selectedFont{
+    font-weight: 650 !important;
+}
+
+.expandNormalIcon{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.sidebarListText{
+    transition: font-size 1s ease-out;
+}

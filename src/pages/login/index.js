@@ -15,7 +15,10 @@ import { Paper } from "@mui/material";
 import Copyright from "@/Components/commons/CopyRight";
 import Logo from "@/Components/commons/Logo";
 import IndividualPageLayout from "@/Components/layout/IndividualPageLayout";
-import MuiAlert from '@mui/material/Alert';
+import MuiAlert from "@mui/material/Alert";
+import { createHotToast } from "@/utils/ToastUtils";
+import { login } from "@/utils/ApiUtils";
+import { useSession } from "next-auth/react";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -24,21 +27,21 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function SignIn() {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState(false);
-  //   const { data: session, status } = useSession();
-  //   React.useEffect(() => {
-  //     if (status === "authenticated") {
-  //       const { callbackUrl } = router?.query;
-  //       if (callbackUrl) {
-  //         setTimeout(() => {
-  //           router.push(callbackUrl);
-  //         }, 200);
-  //       } else {
-  //         setTimeout(() => {
-  //           router.push("/cms");
-  //         }, 200);
-  //       }
-  //     }
-  //   }, [status, router]);
+  const { data: session, status } = useSession();
+  React.useEffect(() => {
+    if (status === "authenticated") {
+      const { callbackUrl } = router?.query;
+      if (callbackUrl) {
+        setTimeout(() => {
+          router.push(callbackUrl);
+        }, 200);
+      } else {
+        setTimeout(() => {
+          router.push("/app/doctor");
+        }, 200);
+      }
+    }
+  }, [status, router]);
 
   const handleClose = (event, reason) => {
     setIsOpen(false);
@@ -48,20 +51,37 @@ function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+      password: data.get("password"),
     });
 
-    if (data.get('email') == 'jai@email.com' && data.get('password') == 'Jai0987') {
-      setIsOpen(false)
-      router.push("/home");
-    }
-    if (data.get('email') == 'piyush@email.com' && data.get('password') == 'Piyush0987') {
-      setIsOpen(false)
-      router.push("/doctordashboard");
-    }
-    else
-      setIsOpen(true)
+    const res = login("credentials", {
+      redirect: false,
+      username: data.get("email"),
+      password: data.get("password"),
+      callbackUrl: router.query.callbackUrl,
+    });
+    const message = {};
+    message.success = "Log in Success";
+    message.error = "Invalid Credentails";
+    message.loading = "Loging in ....";
+    message.promise = res;
+    createHotToast(message, "promise");
+
+    // if (
+    //   data.get("email") == "jai@email.com" &&
+    //   data.get("password") == "Jai0987"
+    // ) {
+    //   setIsOpen(false);
+    //   router.push("/home");
+    // }
+    // if (
+    //   data.get("email") == "priyadarship4@gmail.com" &&
+    //   data.get("password") == "piyush@99"
+    // ) {
+    //   setIsOpen(false);
+    //   router.push("/doctordashboard");
+    // } else setIsOpen(true);
     // const res = login("credentials", {
     //   redirect: false,
     //   username: data.get("email"),
@@ -74,8 +94,6 @@ function SignIn() {
     // message.loading = "Loging in ....";
     // message.promise = res;
     // createHotToast(message, "promise");
-
-
   };
 
   //   console.log("login url ", BACKEND_URL.login);
@@ -90,7 +108,7 @@ function SignIn() {
             flexDirection: "column",
             alignItems: "center",
             padding: 1,
-            // border:'2px solid green'
+            // border: "2px solid green",
           }}
           elevation={3}
         >
@@ -130,12 +148,11 @@ function SignIn() {
               autoComplete="current-password"
             />
             <Grid>
-              {isOpen &&
-                <Alert
-                  onClose={handleClose}
-                  severity="error">
+              {isOpen && (
+                <Alert onClose={handleClose} severity="error">
                   Please provide valid credentials!
-                </Alert>}
+                </Alert>
+              )}
             </Grid>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -146,19 +163,20 @@ function SignIn() {
               fullWidth
               variant="contained"
               color="secondary"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 1, mb: 2 }}
+              className="appButton"
             >
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="/forgotPassword" variant="body2">
+              <Grid item xs={6}>
+                <Link href="/forgotPassword" variant="p" className="linkText">
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
-                <Link href="/" variant="a">
-                  {"Don't have an account? Sign Up"}
+              <Grid item xs={6}>
+                <Link href="/signup" variant="p" className="linkText">
+                  {"Don't have an account? SignUp"}
                 </Link>
               </Grid>
             </Grid>

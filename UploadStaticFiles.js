@@ -1,28 +1,28 @@
 const fs = require("fs");
 const path = require("path");
-const async = require("async");
-const AWS = require("aws-sdk");
-const mime = require("mime-types");
-const readdir = require("recursive-readdir");
+// const async = require("async");
+// const AWS = require("aws-sdk");
+// const mime = require("mime-types");
+// const readdir = require("recursive-readdir");
 const rootFolder = path.resolve(__dirname, "./");
 
 //add bucket access key here
-const Config = {
-  accessKey: "",
-  secretKey: "",
-  region: "ap-south-1",
-  uploadFolder: "./.next/static", //give the folder path which need to upload
-  maxAsyncOperation: 10,
-  bucketName: "awsomecoderscdn",
-  s3Path: "astrology-staging",
-};
+// const Config = {
+//   accessKey: "",
+//   secretKey: "",
+//   region: "ap-south-1",
+//   uploadFolder: "./.next/static", //give the folder path which need to upload
+//   maxAsyncOperation: 10,
+//   bucketName: "awsomecoderscdn",
+//   s3Path: "doc247-stage/{}",
+// };
 
-const spacesEndpoint = new AWS.Endpoint("sgp1.digitaloceanspaces.com");
-const s3 = new AWS.S3({
-  endpoint: spacesEndpoint,
-  accessKeyId: "DO00BTDMMF37WCU99YU2",
-  secretAccessKey: "YJWURH3lGtRwlKoEXNO8TsBSpXaMTRokZW3Gr2bWuLc",
-});
+// const spacesEndpoint = new AWS.Endpoint("sgp1.digitaloceanspaces.com");
+// const s3 = new AWS.S3({
+//   endpoint: spacesEndpoint,
+//   accessKeyId: "DO00BTDMMF37WCU99YU2",
+//   secretAccessKey: "YJWURH3lGtRwlKoEXNO8TsBSpXaMTRokZW3Gr2bWuLc",
+// });
 // const s3 = new AWS.S3({
 //   accessKeyId: Config.accessKey,
 //   secretAccessKey: Config.secretKey,
@@ -66,10 +66,12 @@ async function uploadToS3(upload) {
   );
 }
 
-uploadToS3(Config.uploadFolder)
-  .then(() => {
-    console.log("uploaded successfully");
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
+// uploadToS3(Config.uploadFolder)
+//   .then(() => {
+//     console.log("uploaded successfully");
+//   })
+//   .catch((err) => {
+//     console.error(err.message);
+//   });
+
+console.log(process.env.BUILD_ID);

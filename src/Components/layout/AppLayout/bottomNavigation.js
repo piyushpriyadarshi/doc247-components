@@ -1,4 +1,5 @@
 import { Home, Person } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const bottomNav = [
   {
@@ -8,7 +9,7 @@ const bottomNav = [
   },
   {
     text: "Search Doctors",
-    icon: <Person />,
+    icon: <SearchIcon />,
     url: "/search/doctor",
   },
   {

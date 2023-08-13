@@ -24,3 +24,12 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.linkText{
+  font-size: smaller;
+}
+
+.appButton{
+  text-transform: none;
+}
