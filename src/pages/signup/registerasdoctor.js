@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import Logo from "@/Components/commons/Logo";
 import IndividualPageLayout from "@/Components/layout/IndividualPageLayout";
 import Copyright from "@/Components/commons/CopyRight";
-import MuiAlert from '@mui/material/Alert';
+import MuiAlert from "@mui/material/Alert";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -30,20 +30,20 @@ function DoctorSignUp() {
     name: "",
     email: "",
     password: "",
-    number:''
+    number: "",
   });
   const [error, SetErrorData] = React.useState({
     name: "",
     email: "",
     password: "",
-    number:''
+    number: "",
   });
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleValidation = (type, value) => {
     let message = "";
     switch (type) {
-      case 'number':
+      case "number":
         message = validateNumber(value);
         break;
       case "email":
@@ -77,13 +77,13 @@ function DoctorSignUp() {
   }
   function validateNumber(number) {
     let message = "";
-    if (number.length < 10 && number.length >0 ) {
+    if (number.length < 10 && number.length > 0) {
       message = "Your mobile number should be of 10 digits";
     }
-    if (number.length > 10 ) {
+    if (number.length > 10) {
       message = " Your mobile number should not be more than 10 digits";
     }
-    if (number.length <1 ) {
+    if (number.length < 1) {
       message = " mobile number is required";
     }
     return message;
@@ -125,10 +125,14 @@ function DoctorSignUp() {
     //     ? error?.response?.data?.message
     //     : "Some Error Occurred , Please Try Again!";
     // }
-    if(formData.number === '' || formData.password === '' || formData.email === '' || formData.name === '')
-    setIsOpen(true)
-    else
-    router.push("/home");
+    if (
+      formData.number === "" ||
+      formData.password === "" ||
+      formData.email === "" ||
+      formData.name === ""
+    )
+      setIsOpen(true);
+    else router.push("/home");
     console.log(formData);
   };
 
@@ -151,7 +155,7 @@ function DoctorSignUp() {
         </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="given-name"
                 name="name"
@@ -164,16 +168,16 @@ function DoctorSignUp() {
                 value={formData.firstName}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
                 id="number"
                 label="Mobile Number"
                 name="number"
-                type='number'
+                type="number"
                 autoComplete="number"
-                InputProps={{ maxLength: 10}}
+                InputProps={{ maxLength: 10 }}
                 onChange={handleInputChange}
                 value={formData.number}
                 error={error.number}
@@ -212,13 +216,12 @@ function DoctorSignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-            {isOpen &&
-                <Alert
-                  onClose={handleClose}
-                  severity="error">
+              {isOpen && (
+                <Alert onClose={handleClose} severity="error">
                   Please fill all required fields!
-                </Alert>}
-                </Grid>
+                </Alert>
+              )}
+            </Grid>
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -237,14 +240,28 @@ function DoctorSignUp() {
           >
             Sign Up
           </Button>
-          <Grid container >
-          <Grid item >
-              <Link href="/login" variant="body2" color="inherit">
+          <Grid container spacing={0.5}>
+            <Grid item xs={6}>
+              <Link
+                href="/login"
+                variant="body2"
+                color="inherit"
+                className="linkText"
+              >
                 Already have an account? Sign in
               </Link>
             </Grid>
-            <Grid item sx={{marginTop:{sm:0,xs:2},marginLeft:{xs:0,sm:3}}}>
-              <Link href="/" variant="body2" color="inherit">
+            <Grid
+              item
+              // sx={{ marginTop: { sm: 0, xs: 2 }, marginLeft: { xs: 0, sm: 3 } }}
+              xs={6}
+            >
+              <Link
+                href="/"
+                variant="body2"
+                color="inherit"
+                className="linkText"
+              >
                 Not a doctor? Sign up here
               </Link>
             </Grid>

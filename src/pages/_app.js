@@ -1,6 +1,4 @@
 import React from "react";
-// import { SessionProvider } from "next-auth/react";
-// import Auth from "../components/Auth";
 import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -9,6 +7,8 @@ import { useRouter } from "next/router";
 import { CssBaseline } from "@mui/material";
 import Spinner from "@/Components/spinner";
 import "@/styles/globals.css";
+import { SessionProvider } from "next-auth/react";
+import Auth from "@/Components/Auth";
 
 const lightTheme = createTheme({
   palette: {
@@ -86,74 +86,81 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   // console.log(theme);
   return (
     <ThemeProvider theme={lightTheme}>
-      <CssBaseline />
+      <SessionProvider session={session}>
+        <CssBaseline />
 
-      {/* <SessionProvider session={session}> */}
-      {loading && <Spinner open={loading} message="please wait" />}
-      {Component.auth ? (
-        // <Auth
-        //   role={Component?.auth?.role}
-        //   loadingMessage={Component?.auth?.loading}
-        // >
-        <>
-          {/* <Header /> */}
-          {Component.layout ? (
-            <Component.layout>
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1.0"
-                />
-              </Head>
-              <Component {...pageProps} />
-              <Toaster position="top-center" reverseOrder={false} />
-            </Component.layout>
-          ) : (
+        {/* <SessionProvider session={session}> */}
+        {loading && (
+          <Spinner
+            open={loading}
+            message={Component?.auth?.loading || "please wait"}
+          />
+        )}
+        {Component.auth ? (
+          <Auth
+            role={Component?.auth?.role}
+            loadingMessage={Component?.auth?.loading}
+          >
             <>
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1.0"
-                />
-              </Head>
-              <Component {...pageProps} />
+              {/* <Header /> */}
+              {Component.layout ? (
+                <Component.layout>
+                  <Head>
+                    <meta
+                      name="viewport"
+                      content="width=device-width, initial-scale=1.0"
+                    />
+                  </Head>
+                  <Component {...pageProps} />
+                  <Toaster position="top-center" reverseOrder={false} />
+                </Component.layout>
+              ) : (
+                <>
+                  <Head>
+                    <meta
+                      name="viewport"
+                      content="width=device-width, initial-scale=1.0"
+                    />
+                  </Head>
+                  <Component {...pageProps} />
 
-              <Toaster position="top-center" reverseOrder={false} />
+                  <Toaster position="top-center" reverseOrder={false} />
+                </>
+              )}
             </>
-          )}
-        </>
-      ) : (
-        // </Auth>
-        <>
-          {Component.layout ? (
-            <Component.layout metaData={Component?.metaData}>
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1.0"
-                />
-              </Head>
-              <Component {...pageProps} />
+          </Auth>
+        ) : (
+          <>
+            {Component.layout ? (
+              <Component.layout metaData={Component?.metaData}>
+                <Head>
+                  <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                  />
+                </Head>
+                <Component {...pageProps} />
 
-              <Toaster position="top-center" reverseOrder={false} />
-            </Component.layout>
-          ) : (
-            <>
-              <Head>
-                <meta
-                  name="viewport"
-                  content="width=device-width, initial-scale=1.0"
-                />
-              </Head>
-              <Component {...pageProps} />
+                <Toaster position="top-center" reverseOrder={false} />
+              </Component.layout>
+            ) : (
+              <>
+                <Head>
+                  <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                  />
+                </Head>
+                <Component {...pageProps} />
 
-              <Toaster position="top-center" reverseOrder={false} />
-            </>
-          )}
-        </>
-      )}
-      {/* </SessionProvider> */}
-      {/* </Provider> */}
+                <Toaster position="top-center" reverseOrder={false} />
+              </>
+            )}
+          </>
+        )}
+        {/* </SessionProvider> */}
+        {/* </Provider> */}
+      </SessionProvider>
     </ThemeProvider>
   );
 }

@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { amber } from "@mui/material/colors";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
 import { useRouter } from "next/router";
 import Page from "@/Components/commons/Page";
@@ -17,7 +17,7 @@ function IndividualPageLayout({ children, metaData }) {
   return (
     <>
       <CssBaseline />
-      <AppBar color="secondary">
+      <AppBar color="default">
         <Toolbar
           sx={{
             display: "flex",
@@ -29,14 +29,18 @@ function IndividualPageLayout({ children, metaData }) {
           <IconButton
             onClick={() => {
               router.back();
-              // history.back();
             }}
             style={{ marginRight: "1rem" }}
             color="success"
           >
-            <ArrowBackIcon style={{ color: amber[500] }} />
+            <NavigateBeforeIcon style={{ color: amber[500] }} />
           </IconButton>
-          <Typography variant="title" component="div" color={amber[500]}>
+          <Typography
+            variant="title"
+            component="div"
+            color={amber[500]}
+            sx={{ fontWeight: "550", pl: 2 }}
+          >
             {metaData?.title}
           </Typography>
         </Toolbar>
