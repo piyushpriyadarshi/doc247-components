@@ -8,9 +8,16 @@
     "start": "next start",
     "lint": "next lint",
     "s3upload": "node UploadStaticFiles.js",
-    "buildcdn": "npm run build && npm run s3upload"
+    "buildcdn": "npm run build && npm run s3upload",
+    "static": "next build && next export",
+    "export": "next export",
+    "mobileDev": "npm run build && npm run export && npx cap sync"
   },
   "dependencies": {
+    "@capacitor/android": "^5.0.5",
+    "@capacitor/app": "^5.0.3",
+    "@capacitor/core": "^5.0.5",
+    "@capacitor/geolocation": "^5.0.6",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
@@ -29,6 +36,7 @@
     "react-snap-carousel": "^0.3.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^5.0.5",
     "prettier": "^2.8.8"
   }
 }

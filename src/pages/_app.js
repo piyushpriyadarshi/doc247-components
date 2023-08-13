@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { CssBaseline } from "@mui/material";
 import Spinner from "@/Components/spinner";
 import "@/styles/globals.css";
+import { App as CapacitorApp } from "@capacitor/app";
 
 const lightTheme = createTheme({
   palette: {
@@ -82,6 +83,15 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       router.events.off("routeChangeError", pageLoadingEnd);
     };
   }, [router.events]);
+  React.useEffect(() => {
+    CapacitorApp.addListener("backButton", ({ canGoBack }) => {
+      if (!canGoBack) {
+        CapacitorApp.exitApp();
+      } else {
+        window.history.back();
+      }
+    });
+  }, []);
 
   // console.log(theme);
   return (
