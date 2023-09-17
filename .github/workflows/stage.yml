@@ -15,8 +15,8 @@ on:
         required: true
 #2
 env:
-  REGISTRY: "gchr.io/piyushpriyadarshi"
-  IMAGE_NAME: "doc247-components"
+  REGISTRY: "ghcr.io/piyushpriyadarshi"
+  IMAGE_NAME: "doc247components"
 
 #3
 jobs:
