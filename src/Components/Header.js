@@ -15,8 +15,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Drawer from "@mui/material/Drawer";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import { Button } from "@mui/material";
+import { useRouter } from "next/router";
 
 export default function Header() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     console.log("here");
@@ -113,7 +116,7 @@ export default function Header() {
           top: 0,
         }}
       >
-        <AppBar position="static" sx={{ background: "#566984cc" }}>
+        <AppBar position="static" color="secondary">
           <Toolbar>
             <IconButton
               size="large"
@@ -129,11 +132,11 @@ export default function Header() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              sx={{ flexGrow: 1, display: { sm: "block" } }}
             >
-              MR RJS
+              Planet School
             </Typography>
-            <Search>
+            {/* <Search>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
@@ -141,7 +144,18 @@ export default function Header() {
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />
-            </Search>
+            </Search> */}
+
+            <Button
+              variant="outlined"
+              sx={{ m: 1 }}
+              onClick={() => {
+                router.push("/login");
+              }}
+            >
+              Login
+            </Button>
+            <Button variant="contained">Get Started</Button>
           </Toolbar>
         </AppBar>
         <Box component="nav">
