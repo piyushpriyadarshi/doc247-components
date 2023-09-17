@@ -14,12 +14,21 @@
 # CMD ["node_modules/.bin/next", "start"]
 
 
+
 FROM node:18.4.0-alpine AS build
 WORKDIR /usr/src
+RUN npm install -g npm@9.6.7
+RUN apk add --no-cache git
 
 # Only build dependencies in the first step. This is very good for caching in Docker, as this layer will only
 # be re-built whenever the dependency-list changes.
 COPY package*.json ./
+ARG github_token
+ENV GITHUB_TOKEN=$github_token
+
+RUN echo registry=https://npm.pkg.github.com/piyushpriyadarshi >> ~/.npmrc
+# RUN echo @piyushpriyadarshi:registry=https://npm.pkg.github.com/ >> ~/.npmrc
+RUN echo //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN >> ~/.npmrc
 RUN npm ci
 
 # Copy the actual source code and build it
@@ -37,9 +46,12 @@ RUN wget https://gobinaries.com/tj/node-prune --output-document - | /bin/sh && n
 FROM node:18.4.0-alpine AS distribution
 WORKDIR /opt/my-app
 ENV NODE_ENV=production
-COPY --from=build /usr/src/node_modules node_modules
-COPY --from=build /usr/src/.next .next
+# COPY --from=build /usr/src/node_modules node_modules
+# COPY --from=build /usr/src/.next/ .next
+COPY --from=build /usr/src/.next/standalone ./
+COPY --from=build /usr/src/.next/static ./.next/static
 
 # Expose port and run application
 EXPOSE 3000
-CMD ["node_modules/.bin/next", "start"]
+# CMD ["node_modules/.bin/next", "start"]
+CMD ["server.js"]
