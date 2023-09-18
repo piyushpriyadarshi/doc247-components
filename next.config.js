@@ -5,8 +5,7 @@ const nextConfig = {
   images: {
     domains: ["unsplash.com"],
   },
-  // assetPrefix:
-  //   "https://awsomecoderscdn.sgp1.cdn.digitaloceanspaces.com/astrology-staging",
+  assetPrefix: "https://planetschool.b-cdn.net",
 };
 
 module.exports = nextConfig;
