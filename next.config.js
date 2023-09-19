@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: ["unsplash.com"],
   },
-  assetPrefix: "https://planetschool.b-cdn.net",
+  // assetPrefix: "https://planetschool.b-cdn.net",
 };
 
 module.exports = nextConfig;
