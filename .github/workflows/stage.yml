@@ -29,9 +29,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build container image
-        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA) . --build-arg github_token=env.token
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA) . --build-arg github_token=${{env.token}}
 
       - name: Log in to Github Container Registry with short-lived credentials
-        run: docker login --username piyushpriyadarshi --password env.token ghcr.io
+        run: docker login --username piyushpriyadarshi --password ${{env.token}} ghcr.io
       - name: Push image to Github Container Registry
         run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA)
