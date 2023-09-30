@@ -22,14 +22,16 @@ env:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
+    env:
+      token: ${{ secrets.GHCR_PACKAGE_TOKEN }}
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
       - name: Build container image
-        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA) . --build-arg github_token=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
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA) . --build-arg github_token=env.token
 
       - name: Log in to Github Container Registry with short-lived credentials
-        run: docker login --username piyushpriyadarshi --password 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 ghcr.io
+        run: docker login --username piyushpriyadarshi --password env.token ghcr.io
       - name: Push image to Github Container Registry
         run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA)
