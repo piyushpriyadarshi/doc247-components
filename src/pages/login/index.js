@@ -19,7 +19,6 @@ import MuiAlert from "@mui/material/Alert";
 import { createHotToast } from "@/utils/ToastUtils";
 import { login } from "@/utils/ApiUtils";
 import { useSession } from "next-auth/react";
-import { Login } from "react-component-library";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -99,14 +98,93 @@ function SignIn() {
 
   //   console.log("login url ", BACKEND_URL.login);
   return (
-    <>
-      <Login
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log("login");
+    <Container component="main" maxWidth="sm" sx={{ mt: 12 }}>
+      <CssBaseline />
+      <Typography
+        variant="h6"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontWeight: "700",
+          fontSize: "2rem",
+          p: 2,
         }}
-      />
-    </>
+      >
+        PlanetSchool
+      </Typography>
+
+      <Typography variant="p" sx={{ fontWeight: 550 }}>
+        Login With
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        //   sx={{ pt: 2 }}
+      >
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+        />
+        {/* <Grid>
+              {isOpen && (
+                <Alert onClose={handleClose} severity="error">
+                  Please provide valid credentials!
+                </Alert>
+              )}
+            </Grid> */}
+        <FormControlLabel
+          control={<Checkbox value="remember" color="primary" />}
+          label="Remember me"
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+          sx={{ mt: 1, mb: 2 }}
+          className="appButton"
+        >
+          Login
+        </Button>
+        <Grid container>
+          <Grid item xs={6}>
+            <Link href="/auth/forgot-password" variant="p" className="linkText">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item xs={6}>
+            <Link
+              href="/auth/register"
+              variant="p"
+              //   className="linkText"
+              color="secondary"
+            >
+              {"Don't have an account? SignUp"}
+            </Link>
+          </Grid>
+        </Grid>
+      </Box>
+      {/* </Paper> */}
+      {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
+    </Container>
   );
 }
 

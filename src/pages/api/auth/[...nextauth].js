@@ -49,14 +49,14 @@ export default NextAuth({
         //   return null;
         // }
         // console.log(credentials);
-        const user = await login(credentials);
-        // const user = {
-        //   id: 1,
-        //   name: "J Smith",
-        //   email: "jsmith@example.com",
-        //   roles: ["APPUSER"],
-        //   token: "eeeee",
-        // };
+        // const user = await login(credentials);
+        const user = {
+          id: 1,
+          name: "J Smith",
+          email: "jsmith@example.com",
+          roles: ["DOCTOR"],
+          token: "eeeee",
+        };
 
         // console.log(credentials);
         // // Return null if user data could not be retrieved
